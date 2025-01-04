@@ -48,40 +48,143 @@
 
 </head>
 <body>
-    <h1 class="hidden">Site is under construction</h1>
+    <div id="welcomeBG">
+        <!-- <img src="/img/weclomeBG.webp" alt="Background-Image" id="welcomeImg"> -->
+         <div id="welcomeImg"></div>
+    </div>
 
     <section id="welcome">
 
-        <div id="logo">
-            <h1>BladeRR</h1>
+        <div class="right-align">
+            <h1 style="color:crimson">Site is under construction</h1>
+            <div id="logo">
+                <!-- <h1 class="hidden">Site is under construction</h1> -->
+                <h1 class="logo">Bladerr</h1>
+            </div>
+    
+            <nav>
+                <ul>
+                    <li>Home Page</li>
+                    <li>Gallery</li>
+                    <li>Roadmap</li>
+                    <li>Contact Info</li>
+                    <li>About Us</li>
+                </ul>
+            </nav>
         </div>
-
-        <nav>
-            <ul>
-                <li>Home Page</li>
-                <li>Gallery</li>
-                <li>Roadmap</li>
-                <li>Contact Info</li>
-                <li>About Us</li>
-            </ul>
-        </nav>
     </section>
     
     <section id="gallery">
+        <h1>Gallery</h1>
+        <p>Check out our latest motorcycle projects and adventures.</p>
+
+        <!-- Prototye -->
+        <div class="carousel">
+            <div class="carousel-text">
+                <h2 class="carousel-title">Title 1</h2>
+                <p class="carousel-description">Description for Image 1.</p>
+            </div>
+            <div class="carousel-images">
+                <img src="/img/img1.png" alt="Image 1" class="carousel-image">
+                <img src="/img/img2.png" alt="Image 2" class="carousel-image">
+            </div>
+            <div class="carousel-controls">
+                <div class="carousel-indicators">
+                    <span class="dot" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                </div>
+                <button class="carousel-pause">Pause</button>
+            </div>
+        </div>
+        <!-- Prototye -->
 
     </section>
 
     <section id="roadmap">
-
-    </section>
-
-    <section id="contact">
-
+        <h1>Roadmap</h1>
+        <p>Our future plans and upcoming projects.</p>
+        <ul>
+            <li>Project 1: Build a workshop</li>
+            <li>Project 2: Get the first motorcycle</li>
+        </ul>
     </section>
 
     <section id="about">
-
+        <h1>About Us</h1>
+        <p>Welcome to BladeRR! We are passionate about motorcycles and love sharing our DIY mechanic content with the world. Our YouTube channel is dedicated to helping fellow motorcycle enthusiasts with tips, tricks, and tutorials on fixing and maintaining their bikes. Join us on our journey and become part of the BladeRR community!</p>
     </section>
 
+    <section id="contact">
+        <h1>Contact Info</h1>
+        <p>Get in touch with us for any inquiries or collaborations.</p>
+        <p>Email: info@bladerr.com</p>
+    </section>
+
+    <!-- Prototype -->
+    <!-- TODO: offload to a separate js file -->
+    <!-- TODO: define the images in the js file, then calculate how much "indicator dots" we need -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.carousel-image');
+            const titles = ["Title 1", "Title 2"];
+            const descriptions = ["Description for Image 1.", "Description for Image 2."];
+            const dots = document.querySelectorAll('.dot');
+            const pauseButton = document.querySelector('.carousel-pause');
+            const titleElement = document.querySelector('.carousel-title');
+            const descriptionElement = document.querySelector('.carousel-description');
+            let currentIndex = 0;
+            let intervalId;
+            let isPaused = false;
+
+            function showImage(index) {
+                images.forEach((img, i) => {
+                    img.style.display = i === index ? 'block' : 'none';
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                titleElement.textContent = titles[index];
+                descriptionElement.textContent = descriptions[index];
+            }
+
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
+
+            function startCarousel() {
+                intervalId = setInterval(nextImage, 3000); // Change image every 3 seconds
+            }
+
+            function pauseCarousel() {
+                clearInterval(intervalId);
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    showImage(currentIndex);
+                    if (!isPaused) {
+                        pauseCarousel();
+                        startCarousel();
+                    }
+                });
+            });
+
+            pauseButton.addEventListener('click', function() {
+                if (isPaused) {
+                    startCarousel();
+                    this.textContent = 'Pause';
+                } else {
+                    pauseCarousel();
+                    this.textContent = 'Play';
+                }
+                isPaused = !isPaused;
+            });
+
+            showImage(currentIndex);
+            startCarousel();
+        });
+    </script>
 </body>
 </html>

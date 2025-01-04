@@ -1,9 +1,21 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,700,800,900&display=swap";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: poppins, sans-serif;
+}
+
+body{
+    background-color: #323232;
+}
+
+.logo{
+    font-family: "Comfortaa", serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
 }
 
 html {
@@ -22,4 +34,164 @@ nav ul li:first-of-type{
 nav ul li{
     list-style: none;
     margin: 0rem .5rem;
+    font-size: 1.3em;
+    text-decoration: underline;
 }
+
+nav ul li:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color: #ddd;
+}
+
+#welcomeBG{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    
+    background-color: rgba(50,50,50);
+}
+
+#welcomeImg{
+    background-image: url(/img/weclomeBG.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    width: 100%;
+    height: 100%;
+    
+    clip-path: polygon(0 0, 55% 0, 50% 100%, 0 100%);
+}
+
+#welcome{
+    height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    justify-content: right;
+    color: white;
+    
+    z-index: 5;
+    position: sticky;
+    
+}
+
+.right-align{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+#logo h1{
+    font-size: 4em;
+}
+
+.hidden{
+    display: none;
+}
+
+section {
+    padding: 2rem;
+    margin: 2rem 0;
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    border-radius: 8px;
+}
+
+section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: crimson;
+}
+
+section p, section ul {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+section img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+section ul li {
+    margin-bottom: 0.5rem;
+}
+
+section:first-of-type{
+    margin: 0;
+    padding: 0;
+}
+
+.carousel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.carousel-text {
+    flex: 1;
+    padding: 20px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-images {
+    flex: 1;
+    position: relative;
+}
+
+.carousel-image {
+    width: 100%;
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+.carousel-pause {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+
